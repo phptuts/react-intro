@@ -1,7 +1,14 @@
 import "./App.css";
 
 function App() {
-  return <h1>Hello World</h1>;
+  let color = "green";
+  let name = "Noah";
+  return (
+    <>
+      <h1>My favorite color is: {color}</h1>
+      <h2>hi, {name}</h2>
+    </>
+  );
 }
 
 export default App;
