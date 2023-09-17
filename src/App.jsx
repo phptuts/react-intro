@@ -1,4 +1,6 @@
 import "./App.css";
+import Example from "./Example";
+import Fun from "./Fun";
 
 function App() {
   let color = "green";
@@ -6,7 +8,7 @@ function App() {
   let colors = ["red", "yellow", "green", "blue", "red"];
   let favoriteNumbers = [7, 77, 43, 90, 81];
   function hi() {
-    alert("hi");
+    //alert("hi");
   }
   function onLeaveFavoriteColor() {
     console.log("leaving favorite colors");
@@ -15,6 +17,8 @@ function App() {
     <>
       <h1>My favorite color is: {color}</h1>
       <h2>hi, {name}</h2>
+      <Fun name={name} />
+      <Example color={name} />
       <ol onMouseOver={hi}>
         {favoriteNumbers.map((n) => {
           return <li key={n}>{n}</li>;
