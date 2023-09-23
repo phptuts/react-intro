@@ -8,6 +8,7 @@ function App() {
   let color = colorState[0];
   let setColor = colorState[1];
   const [favoriteNumber, setFavoriteNumber] = useState(7);
+  const [show, setShow] = useState(true);
   let name = "Noah";
   let colors = ["red", "yellow", "green", "blue", "red"];
   let favoriteNumbers = [7, 77, 43, 90, 81];
@@ -17,6 +18,11 @@ function App() {
   function favNumber() {
     setFavoriteNumber(11);
   }
+  function toggleParagraph() {
+    setShow((currentShow) => {
+      return !currentShow;
+    });
+  }
   function onLeaveFavoriteColor() {
     console.log("leaving favorite colors");
   }
@@ -25,6 +31,7 @@ function App() {
       <h1>My favorite color is: {color}</h1>
       <h2>Favorite Number {favoriteNumber}</h2>
       <h2>hi, {name}</h2>
+      {show && <p>Hi this is my paragraph</p>}
       <Fun name={color} />
       <Example color={color} />
       <ol onMouseOver={hi}>
@@ -39,6 +46,9 @@ function App() {
       </ul>
       <button onClick={favNumber}>Change Number</button>
       <button onClick={hi}>Hi</button>
+      <button onClick={toggleParagraph}>
+        {show ? "Hide" : "Show"} paragraph
+      </button>
     </>
   );
 }
