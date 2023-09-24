@@ -9,7 +9,6 @@ function App() {
   let setColor = colorState[1];
   const [favoriteNumber, setFavoriteNumber] = useState(7);
   const [show, setShow] = useState(true);
-  const [rotateDegrees, setRotateDegrees] = useState(0);
   let name = "Noah";
   let colors = ["red", "yellow", "green", "blue", "red"];
   let favoriteNumbers = [7, 77, 43, 90, 81];
