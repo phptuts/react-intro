@@ -1,0 +1,17 @@
+.happy {
+  color: salmon;
+  font-size: 100px;
+}
+
+.sad {
+  color: green;
+  font-size: 8px;
+}
+
+.awesome {
+  color: rgb(38, 38, 141);
+}
+
+.cool {
+  color: orange;
+}

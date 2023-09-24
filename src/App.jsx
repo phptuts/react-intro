@@ -33,7 +33,9 @@ function App() {
 
   return (
     <>
-      <h1>My favorite color is: {color}</h1>
+      <h1 className={show ? "awesome" : "cool"}>
+        My favorite color is: {color}
+      </h1>
       <h2 style={{ color: show ? "red" : "green" }}>
         Favorite Number {favoriteNumber}
       </h2>
@@ -42,7 +44,7 @@ function App() {
       {show && <p>Hi this is my paragraph</p>}
       <Fun name={color} />
       <Example color={color} />
-      <ol onMouseOver={hi}>
+      <ol className={show ? "happy" : "sad"} onMouseOver={hi}>
         {favoriteNumbers.map((n) => {
           return <li key={n}>{n}</li>;
         })}
