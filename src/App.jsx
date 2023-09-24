@@ -9,6 +9,7 @@ function App() {
   let setColor = colorState[1];
   const [favoriteNumber, setFavoriteNumber] = useState(7);
   const [show, setShow] = useState(true);
+  const [degree, setDegree] = useState(0);
   let name = "Noah";
   let colors = ["red", "yellow", "green", "blue", "red"];
   let favoriteNumbers = [7, 77, 43, 90, 81];
@@ -16,6 +17,12 @@ function App() {
     color: "red",
     backgroundColor: "blue",
   };
+
+  function onRotate(e) {
+    const newDegree = +e.target.value;
+    setDegree(newDegree);
+  }
+
   function hi() {
     setColor("red");
   }
@@ -31,6 +38,11 @@ function App() {
     console.log("leaving favorite colors");
   }
 
+  function onChangeFavoriteNumber(e) {
+    const number = +e.target.value;
+    setFavoriteNumber(number);
+  }
+
   return (
     <>
       <h1 className={show ? "awesome" : "cool"}>
@@ -39,8 +51,25 @@ function App() {
       <h2 style={{ color: show ? "red" : "green" }}>
         Favorite Number {favoriteNumber}
       </h2>
+      <input
+        type="number"
+        name=""
+        value={favoriteNumber}
+        onChange={onChangeFavoriteNumber}
+        placeholder="Enter Favorite Number"
+        id=""
+      />
       <h2>hi, {name}</h2>
-      <h2>Rotate H2</h2>
+      <h2 style={{ transform: `rotateX(${degree}deg)` }}>Rotate</h2>
+      <input
+        type="range"
+        onChange={onRotate}
+        value={degree}
+        min={0}
+        max={360}
+        step={1}
+        id=""
+      />
       {show && <p>Hi this is my paragraph</p>}
       <Fun name={color} />
       <Example color={color} />
