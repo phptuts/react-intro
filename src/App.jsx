@@ -1,44 +1,36 @@
-import { useEffect, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import "./App.css";
 import Child from "./Child";
 import Color from "./Color";
 
 function App() {
-  const [size, setSize] = useState(20);
-  const [color, setColor] = useState("#000");
-  const [win, setWin] = useState(false);
-  function changeSize(newSize) {
-    setSize(newSize);
-  }
-  const [seconds, setSeconds] = useState(0);
-  useEffect(() => {
-    const id = setInterval(() => {
-      setSeconds((s) => {
-        return s + 1;
-      });
-    }, 1000);
-    return () => {
-      clearInterval(id);
-      console.log("unloading");
-    };
-  }, []);
-
-  useEffect(() => {
-    console.log("this changed");
-    if (color == "#000800" && size == 30) {
-      setWin(true);
+  function reducer(state, action) {
+    switch (action.type) {
+      case "CHANGE_FAV_NUMBER":
+        return { ...state, favoriteNum: action.payload };
+      case "CHANGE_COLOR":
+        return { ...state, color: action.payload };
+      default:
+        return { ...state };
     }
-  }, [size, color]);
-
-  if (win) {
-    return <h1>You Won</h1>;
   }
 
+  const [state, dispatch] = useReducer(reducer, {
+    color: "red",
+    favoriteNum: 33,
+  });
+  function onFavNumChange() {
+    dispatch({ type: "CHANGE_FAV_NUMBER", payload: 77 });
+  }
+  function onChangeColor() {
+    dispatch({ type: "CHANGE_COLOR", payload: "green" });
+  }
   return (
     <>
-      <h2 style={{ fontSize: `${size}px`, color: color }}>{seconds}</h2>
-      <Child sizeFunc={changeSize} />
-      <Color setColor={setColor} />
+      <h2 style={{ color: state.color }}>Color: {state.color}</h2>
+      <h2>Favorite Number: {state.favoriteNum}</h2>
+      <button onClick={onFavNumChange}>Change Favorite number</button>
+      <button onClick={onChangeColor}>Change Color</button>
     </>
   );
 }
