@@ -1,11 +1,12 @@
-const Child = ({ sizeFunc }) => {
-  const passData = (e) => {
-    console.log(e.target.value, "value");
-    sizeFunc(+e.target.value);
-  };
+import Color from "./Color";
+
+const Child = () => {
   return (
     <>
-      <input type="number" onChange={passData} />
+      <div style={{ border: "solid black 2px" }}>
+        <h2>Child Component</h2>
+        <Color />
+      </div>
     </>
   );
 };

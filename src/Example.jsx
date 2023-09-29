@@ -1,3 +1,3 @@
-export default function Example({ color }) {
-  return <h2>Example: {color}</h2>;
+export default function Example() {
+  return <h2>Example Component</h2>;
 }
